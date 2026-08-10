@@ -1,0 +1,7 @@
+export enum Categoria {
+  AGUA = 'AGUA',
+  ENERGIA = 'ENERGIA',
+  NATUREZA = 'NATUREZA',
+  RECICLAGEM = 'RECICLAGEM',
+  TRANSPORTE = 'TRANSPORTE'
+}
