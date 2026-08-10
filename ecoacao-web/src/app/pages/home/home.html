@@ -1,1 +1,40 @@
-<p>home works!</p>
+<h1>Bem-vindo ao {{ nomeProjeto }}!</h1>
+
+<p>Esta é a página inicial da aplicação</p>
+
+@if (acoes.length === 0) {
+
+<p>Você ainda não realizou nenhuma ação sustentável.</p>
+
+} @else {
+
+<p>Parabéns! Você já começou a contribuir!</p>
+<p>Numero de Ações realizadas: {{ acoes.length }} </p>
+
+}
+
+<br>
+
+<label> Digite uma Ação:</label>
+<input type="text" [(ngModel)]="nomeAcao" placeholder="Nome da Ação" >
+
+<button (click)="realizarAcao()"> Registrar Ação</button>
+
+<h2>Ações Realizadas:</h2>
+
+<hr>
+
+<ul>
+
+  @for (acao of acoes; track acao) {
+
+  <li>
+    <p>Nome: {{ acao.nome  }}</p>
+    <p>Concluída: {{ acao.quantidade }}</p>
+
+    <button (click)="incrementarAcao(acao)">+</button>
+    <button (click)="decrementarAcao(acao)" [disabled]="acao.quantidade === 0">-</button>
+  </li>
+  }
+
+</ul>
