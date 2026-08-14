@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Acao } from '../../models/acao';
 import { FormsModule } from '@angular/forms';
+import {Categoria} from '../../models/categoria';
 
 @Component({
   selector: 'app-home',
@@ -12,16 +13,28 @@ export class Home {
 
   nomeProjeto = 'EcoAção';
 
+  categoriaSelecionado = Categoria.NATUREZA;
+
+  iconeSelecionado = '🌱';
+
+  Categoria = Categoria;
+
+  categorias = Object.values(Categoria);
+
+  icones: string[] = ['💧','⚡','🌱','♻️','🚲'];
+
   nomeAcao = '';
 
   acoes: Acao[] = [];
 
   realizarAcao() {
     if(this.nomeAcao.trim().length > 0){
-      this.acoes.push({nome: this.nomeAcao,
-        quantidade: 0});
+      this.acoes.push({nome: this.nomeAcao.trim(),
+        quantidade: 0,
+        categoria: this.categoriaSelecionado,
+        icone: this.iconeSelecionado});
+      this.nomeAcao = '';
     }
-    this.nomeAcao = '';
   }
 
   incrementarAcao(acao: Acao) {

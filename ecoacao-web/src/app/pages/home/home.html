@@ -20,6 +20,26 @@
 
 <button (click)="realizarAcao()"> Registrar Ação</button>
 
+<label for="categoria">Categoria:</label>
+
+  <select id="categoria" [(ngModel)]="categoriaSelecionado">
+
+    @for (categoria of categorias; track $index) {
+
+    <option [ngValue]="categoria">{{ categoria }}</option>
+    }
+  </select>
+
+<label for="icone">Icone:</label>
+
+  <select id="icone" [(ngModel)]="iconeSelecionado">
+
+    @for (icone of icones; track icone) {
+
+    <option [ngValue]="icone">{{ icone }}</option>
+    }
+  </select>
+
 <h2>Ações Realizadas:</h2>
 
 <hr>
@@ -29,11 +49,12 @@
   @for (acao of acoes; track acao) {
 
   <li>
-    <p>Nome: {{ acao.nome  }}</p>
+    <p>{{ acao.icone }} {{ acao.nome }}</p>
     <p>Concluída: {{ acao.quantidade }}</p>
+    <p>Categoria: {{ acao.categoria }}</p>
 
-    <button (click)="incrementarAcao(acao)">+</button>
     <button (click)="decrementarAcao(acao)" [disabled]="acao.quantidade === 0">-</button>
+    <button (click)="incrementarAcao(acao)">+</button>
   </li>
   }
 
