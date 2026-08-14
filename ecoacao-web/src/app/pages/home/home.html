@@ -34,7 +34,7 @@
 
   <select id="icone" [(ngModel)]="iconeSelecionado">
 
-    @for (icone of icones; track icone) {
+    @for (icone of icones; track $index) {
 
     <option [ngValue]="icone">{{ icone }}</option>
     }
@@ -46,7 +46,7 @@
 
 <ul>
 
-  @for (acao of acoes; track acao) {
+  @for (acao of acoes; track $index) {
 
   <li>
     <p>{{ acao.icone }} {{ acao.nome }}</p>
