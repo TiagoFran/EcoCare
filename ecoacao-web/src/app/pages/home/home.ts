@@ -45,4 +45,8 @@ export class Home {
     acao.quantidade--;
   }
 
+  removerAcao(indice: number) {
+    this.acoes.splice(indice, 1);
+  }
+
 }

@@ -55,6 +55,7 @@
 
     <button (click)="decrementarAcao(acao)" [disabled]="acao.quantidade === 0">-</button>
     <button (click)="incrementarAcao(acao)">+</button>
+    <button (click)="removerAcao($index)">Remover</button>
   </li>
   }
 
