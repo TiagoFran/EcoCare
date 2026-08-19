@@ -1,0 +1,26 @@
+.acao-card {
+  background-color: rgba(144, 238, 144, 0.8);
+  padding: 16px;
+  margin: 16px;
+  border-radius: 20px;
+
+  width: 100%;
+  max-width: 400px;
+}
+
+.acoes-botoes {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+}
+
+.form-acao {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+ul {
+  list-style: none;
+}

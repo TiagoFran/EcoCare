@@ -13,6 +13,8 @@ export class Home {
 
   nomeProjeto = 'EcoAção';
 
+  proximoId = 1;
+
   categoriaSelecionado = Categoria.NATUREZA;
 
   iconeSelecionado = '🌱';
@@ -27,13 +29,33 @@ export class Home {
 
   acoes: Acao[] = [];
 
+  acoesFiltradas: Acao[] = [];
+
+  categoriaFiltro: Categoria | null = null;
+
   realizarAcao() {
     if(this.nomeAcao.trim().length > 0){
-      this.acoes.push({nome: this.nomeAcao.trim(),
+      this.acoes.push({id: this.proximoId,
+        nome: this.nomeAcao.trim(),
         quantidade: 0,
         categoria: this.categoriaSelecionado,
         icone: this.iconeSelecionado});
+
+      this.proximoId++;
+
       this.nomeAcao = '';
+
+      this.filtrarPorCategoria(this.categoriaFiltro);
+    }
+  }
+
+  filtrarPorCategoria(categoria: Categoria | null) {
+    this.categoriaFiltro = categoria;
+
+    if (categoria === null) {
+      this.acoesFiltradas = this.acoes;
+    } else {
+      this.acoesFiltradas = this.acoes.filter(acao => acao.categoria === categoria);
     }
   }
 
@@ -45,8 +67,10 @@ export class Home {
     acao.quantidade--;
   }
 
-  removerAcao(indice: number) {
-    this.acoes.splice(indice, 1);
+  removerAcao(id: number) {
+    this.acoes = this.acoes.filter(acao => acao.id !== id);
+
+    this.filtrarPorCategoria(this.categoriaFiltro);
   }
 
 }

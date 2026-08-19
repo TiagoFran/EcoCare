@@ -15,12 +15,15 @@
 
 <br>
 
-<label> Digite uma Ação:</label>
-<input type="text" [(ngModel)]="nomeAcao" placeholder="Nome da Ação" >
+<div class="form-acao">
+  <label> Digite uma Ação:</label>
+  <label>
+    <input type="text" [(ngModel)]="nomeAcao" placeholder="Nome da Ação" >
+  </label>
 
-<button (click)="realizarAcao()"> Registrar Ação</button>
+  <button (click)="realizarAcao()"> Registrar Ação</button>
 
-<label for="categoria">Categoria:</label>
+  <label for="categoria">Categoria:</label>
 
   <select id="categoria" [(ngModel)]="categoriaSelecionado">
 
@@ -30,7 +33,7 @@
     }
   </select>
 
-<label for="icone">Icone:</label>
+  <label for="icone">Icone:</label>
 
   <select id="icone" [(ngModel)]="iconeSelecionado">
 
@@ -39,23 +42,36 @@
     <option [ngValue]="icone">{{ icone }}</option>
     }
   </select>
+</div>
+
 
 <h2>Ações Realizadas:</h2>
 
 <hr>
 
+<button (click)="filtrarPorCategoria(null)">Todas</button>
+<button (click)="filtrarPorCategoria(Categoria.AGUA)">Água</button>
+<button (click)="filtrarPorCategoria(Categoria.ENERGIA)">Energia</button>
+<button (click)="filtrarPorCategoria(Categoria.NATUREZA)">Natureza</button>
+<button (click)="filtrarPorCategoria(Categoria.RECICLAGEM)">Reciclagem</button>
+<button (click)="filtrarPorCategoria(Categoria.TRANSPORTE)">Transporte</button>
+
 <ul>
 
-  @for (acao of acoes; track $index) {
+  @for (acao of acoesFiltradas; track $index) {
 
   <li>
+    <div class="acao-card">
     <p>{{ acao.icone }} {{ acao.nome }}</p>
     <p>Concluída: {{ acao.quantidade }}</p>
     <p>Categoria: {{ acao.categoria }}</p>
 
-    <button (click)="decrementarAcao(acao)" [disabled]="acao.quantidade === 0">-</button>
-    <button (click)="incrementarAcao(acao)">+</button>
-    <button (click)="removerAcao($index)">Remover</button>
+      <div class="acoes-botoes">
+        <button (click)="decrementarAcao(acao)" [disabled]="acao.quantidade === 0">-</button>
+        <button (click)="incrementarAcao(acao)">+</button>
+        <button (click)="removerAcao(acao.id)">Remover</button>
+      </div>
+    </div>
   </li>
   }
 
