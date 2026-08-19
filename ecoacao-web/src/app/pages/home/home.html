@@ -16,32 +16,39 @@
 <br>
 
 <div class="form-acao">
-  <label> Digite uma Ação:</label>
-  <label>
-    <input type="text" [(ngModel)]="nomeAcao" placeholder="Nome da Ação" >
-  </label>
+  <div class="campo">
+    <label for="nome"> Digite uma Ação:</label>
+      <input id="nome" type="text" [(ngModel)]="nomeAcao" placeholder="Nome da Ação" >
+  </div>
 
-  <button (click)="realizarAcao()"> Registrar Ação</button>
+  <div class="campo">
+    <label for="categoria">Categoria:</label>
 
-  <label for="categoria">Categoria:</label>
+    <select id="categoria" [(ngModel)]="categoriaSelecionado">
 
-  <select id="categoria" [(ngModel)]="categoriaSelecionado">
+      @for (categoria of categorias; track $index) {
 
-    @for (categoria of categorias; track $index) {
+      <option [ngValue]="categoria">{{ categoria }}</option>
+      }
+    </select>
+  </div>
 
-    <option [ngValue]="categoria">{{ categoria }}</option>
-    }
-  </select>
+  <div class="campo">
+    <label for="icone">Icone:</label>
 
-  <label for="icone">Icone:</label>
+    <select id="icone" [(ngModel)]="iconeSelecionado">
 
-  <select id="icone" [(ngModel)]="iconeSelecionado">
+      @for (icone of icones; track $index) {
 
-    @for (icone of icones; track $index) {
+      <option [ngValue]="icone">{{ icone }}</option>
+      }
+    </select>
+  </div>
 
-    <option [ngValue]="icone">{{ icone }}</option>
-    }
-  </select>
+  <div class="botao">
+    <button (click)="realizarAcao()"> Registrar Ação</button>
+  </div>
+
 </div>
 
 
