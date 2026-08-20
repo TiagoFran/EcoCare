@@ -18,9 +18,37 @@ ul {
   justify-content: center;
 }
 
+.acoes-botoes button {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.acoes-botoes button:disabled {
+  cursor: not-allowed;
+  opacity: 0.9;
+}
+
+.btn-incrementar {
+  background-color: #2e7d32;
+  color: white;
+}
+
+.btn-decrementar {
+  background-color: #f9a825;
+  color: white;
+}
+
+.btn-remover {
+  background-color: #c62828;
+  color: white;
+}
+
 .form-acao {
   display: flex;
-  gap: 10px;
+  gap: 16px;
+  justify-content: center;
   align-items: center;
   flex-wrap: wrap;
 }
@@ -28,5 +56,33 @@ ul {
 .campo {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 5px;
+}
+
+.campo input,
+.capo select {
+  padding: 8px;
+  border-radius: 10px;
+  border: 1px solid #999;
+}
+
+.botao button {
+  padding: 9px 16px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+
+  background-color: #2e7d32;
+  color: white;
+}
+
+.botao button:hover {
+  background-color: #1b5e20;
+}
+
+.botao {
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }

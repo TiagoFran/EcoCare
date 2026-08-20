@@ -56,30 +56,36 @@
 
 <hr>
 
-<button (click)="filtrarPorCategoria(null)">Todas</button>
-<button (click)="filtrarPorCategoria(Categoria.AGUA)">Água</button>
-<button (click)="filtrarPorCategoria(Categoria.ENERGIA)">Energia</button>
-<button (click)="filtrarPorCategoria(Categoria.NATUREZA)">Natureza</button>
-<button (click)="filtrarPorCategoria(Categoria.RECICLAGEM)">Reciclagem</button>
-<button (click)="filtrarPorCategoria(Categoria.TRANSPORTE)">Transporte</button>
+<div>
 
-<ul>
+  <button (click)="filtrarPorCategoria(null)">Todas</button>
+  <button (click)="filtrarPorCategoria(Categoria.AGUA)">Água</button>
+  <button (click)="filtrarPorCategoria(Categoria.ENERGIA)">Energia</button>
+  <button (click)="filtrarPorCategoria(Categoria.NATUREZA)">Natureza</button>
+  <button (click)="filtrarPorCategoria(Categoria.RECICLAGEM)">Reciclagem</button>
+  <button (click)="filtrarPorCategoria(Categoria.TRANSPORTE)">Transporte</button>
 
-  @for (acao of acoesFiltradas; track $index) {
+</div>
 
-  <li>
-    <div class="acao-card">
-    <p>{{ acao.icone }} {{ acao.nome }}</p>
-    <p>Concluída: {{ acao.quantidade }}</p>
-    <p>Categoria: {{ acao.categoria }}</p>
+<div class="acao-box">
+  <ul>
 
-      <div class="acoes-botoes">
-        <button (click)="decrementarAcao(acao)" [disabled]="acao.quantidade === 0">-</button>
-        <button (click)="incrementarAcao(acao)">+</button>
-        <button (click)="removerAcao(acao.id)">Remover</button>
+    @for (acao of acoesFiltradas; track $index) {
+
+    <li>
+      <div class="acao-card">
+        <p>{{ acao.icone }} {{ acao.nome }}</p>
+        <p>Concluída: {{ acao.quantidade }}</p>
+        <p>Categoria: {{ acao.categoria }}</p>
+
+        <div class="acoes-botoes">
+          <button class="btn-decrementar" (click)="decrementarAcao(acao)" [disabled]="acao.quantidade === 0">-</button>
+          <button class="btn-incrementar" (click)="incrementarAcao(acao)">+</button>
+          <button class="btn-remover" (click)="removerAcao(acao.id)">Remover</button>
+        </div>
       </div>
-    </div>
-  </li>
-  }
+    </li>
+    }
 
-</ul>
+  </ul>
+</div>
